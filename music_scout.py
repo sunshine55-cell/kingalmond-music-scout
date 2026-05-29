@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 async def run_yt_dlp(cmd):
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
         if result.returncode == 0:
             mp3_files = sorted(DOWNLOAD_DIR.glob("*.mp3"), key=os.path.getmtime, reverse=True)
             if mp3_files:
