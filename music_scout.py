@@ -7,7 +7,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 TOKEN = "8981207314:AAF_vkG8MOkX1_kd94FreajYW_zNL_-4zps"
 CHAT_ID = "8320513131"
 DOWNLOAD_DIR = Path("/tmp/music_scout")
-DOWNLOAD_DIR.mkdir(exist_ok=True)
+DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(level=logging.INFO)
 
 async def run_yt_dlp(cmd):
