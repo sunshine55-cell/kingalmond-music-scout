@@ -22,16 +22,16 @@ async def run_yt_dlp(cmd):
     return False, ""
 
 async def youtube_pipeline(query):
-    return await run_yt_dlp(["yt-dlp", f"ytsearch1:{query}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "%(title)s.%(ext)s"), "--no-playlist", "--no-check-certificates"])
+    return await run_yt_dlp(["yt-dlp", f"ytsearch1:{query}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "%(title)s.%(ext)s"), "--no-playlist", "--no-check-certificates", "--proxy", "socks5://184.178.172.5:15303"])
 
 async def soundcloud_pipeline(query):
-    return await run_yt_dlp(["yt-dlp", f"scsearch1:{query}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "scouted_track.%(ext)s"), "--no-playlist", "--no-check-certificates"])
+    return await run_yt_dlp(["yt-dlp", f"scsearch1:{query}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "scouted_track.%(ext)s"), "--no-playlist", "--no-check-certificates", "--proxy", "socks5://184.178.172.5:15303"])
 
 async def audiomack_pipeline(query):
-    return await run_yt_dlp(["yt-dlp", f"https://audiomack.com/search?q={query.replace(' ', '+')}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "audiomack_track.%(ext)s"), "--no-playlist", "--no-check-certificates", "--playlist-items", "1"])
+    return await run_yt_dlp(["yt-dlp", f"https://audiomack.com/search?q={query.replace(' ', '+')}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "audiomack_track.%(ext)s"), "--no-playlist", "--no-check-certificates", "--proxy", "socks5://184.178.172.5:15303", "--playlist-items", "1"])
 
 async def youtube_music_pipeline(query):
-    return await run_yt_dlp(["yt-dlp", f"https://music.youtube.com/search?q={query.replace(' ', '+')}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "ytmusic_track.%(ext)s"), "--no-playlist", "--no-check-certificates", "--playlist-items", "1"])
+    return await run_yt_dlp(["yt-dlp", f"https://music.youtube.com/search?q={query.replace(' ', '+')}", "--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--output", str(DOWNLOAD_DIR / "ytmusic_track.%(ext)s"), "--no-playlist", "--no-check-certificates", "--proxy", "socks5://184.178.172.5:15303", "--playlist-items", "1"])
 
 async def download_and_send(query, update, context):
     chat_id = update.effective_chat.id
